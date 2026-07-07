@@ -1,0 +1,123 @@
+<!-- ============================================================
+     FILE: home.html (main home interface)
+     ============================================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Melodify · Home</title>
+
+  <!-- PWA META -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1DB954" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="apple-touch-icon" href="assets/images/Ff_Arpon_cover.png" />
+  <link rel="icon" type="image/png" href="assets/images/Ff_Arpon_cover.png" />
+
+  <!-- FONTS & ICONS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&display=swap" rel="stylesheet" />
+
+  <!-- STYLES -->
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/player.css" />
+  <link rel="stylesheet" href="css/lyrics.css" />
+  <link rel="stylesheet" href="css/ads.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== (injected by JS) -->
+  <div id="appHeader"></div>
+
+  <!-- ===== MAIN ===== -->
+  <main class="container">
+
+    <!-- ===== RECENTLY PLAYED ===== -->
+    <div id="recentlyPlayedSection" class="recently-played-section">
+      <div class="rec-header">
+        <div class="rec-left">
+          <i class="fas fa-clock-rotate-left"></i>
+          <h2>Recently Played</h2>
+          <span class="rec-badge">last 20</span>
+        </div>
+      </div>
+      <div id="recentGridContainer">
+        <div id="recentGrid" class="recent-grid"></div>
+        <div id="recentEmpty" class="recent-empty">
+          <i class="fas fa-headphones"></i>
+          <p>Start listening to see your recently played songs here.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== RECOMMENDATIONS ===== -->
+    <div id="recommendationsSection" class="recommendations-section">
+      <div class="rec-header">
+        <div class="rec-left">
+          <i class="fas fa-fire"></i>
+          <h2>Made For You</h2>
+          <span class="rec-badge">recommended</span>
+        </div>
+        <button class="clear-history-btn" id="clearHistoryBtn" title="Reset listening history">
+          <i class="fas fa-undo-alt"></i> Reset
+        </button>
+      </div>
+      <div class="rec-sub" id="recSub">We analyse your favourites to suggest songs you'll love.</div>
+      <div id="recGridContainer">
+        <div id="recGrid" class="rec-grid"></div>
+        <div id="recEmpty" class="rec-empty hidden">
+          <i class="fas fa-headphones"></i>
+          <p>Start listening to get personalised recommendations!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SONG GRID ===== -->
+    <div id="songGridContainer">
+      <div class="song-grid" id="songGrid"></div>
+      <div id="loadingSpinner" class="spinner"></div>
+      <div id="emptyState" class="empty-state hidden">
+        <i class="fas fa-music"></i>
+        <h3>No songs found</h3>
+        <p>Try adjusting your search or filter.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ===== MODALS & OVERLAYS ===== -->
+  <div id="modalsContainer"></div>
+
+  <!-- ===== PLAYER ===== -->
+  <div id="playerContainer"></div>
+
+  <!-- ===== TOAST ===== -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ===== AUDIO ===== -->
+  <audio id="audioElement" preload="metadata"></audio>
+
+  <!-- ==============================================================
+       JAVASCRIPT (ES Modules)
+       ============================================================== -->
+  <script type="importmap">
+    {
+      "imports": {
+        "firebase/app": "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js",
+        "firebase/auth": "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js",
+        "firebase/firestore": "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"
+      }
+    }
+  </script>
+
+  <script type="module">
+    // ---- Main entry ----
+    import './js/app.js';
+  </script>
+
+</body>
+</html>
