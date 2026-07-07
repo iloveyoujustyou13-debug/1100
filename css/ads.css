@@ -1,0 +1,22 @@
+/* ============================================================
+   FILE: css/ads.css (advertisement display)
+   ============================================================ */
+.ad-container {
+  margin:1rem 0;
+  padding:0.8rem 1rem;
+  background:var(--bg-card);
+  border-radius:var(--radius-sm);
+  border:1px solid var(--border-glass);
+  text-align:center;
+  font-size:0.75rem;
+  color:var(--text-muted);
+}
+.ad-container .ad-label {
+  font-size:0.55rem;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  color:var(--text-muted);
+  margin-bottom:0.2rem;
+}
+.ad-container .ad-content { min-height:60px; display:flex; align-items:center; justify-content:center; }
+.ad-container .ad-content img { max-width:100%; max-height:80px; border-radius:4px; }
