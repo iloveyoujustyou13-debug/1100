@@ -1,0 +1,19 @@
+/* ============================================================
+   FILE: css/upload.css (upload page specific)
+   ============================================================ */
+.upload-section {
+  background:var(--bg-elevated);
+  border-radius:var(--radius);
+  padding:1.5rem 2rem;
+  border:none;
+  box-shadow:var(--shadow);
+}
+.upload-section h2 {
+  font-size:1.1rem;
+  font-weight:600;
+  margin-bottom:0.5rem;
+  display:flex;
+  align-items:center;
+  gap:0.5rem;
+}
+.upload-section h2 i { color:var(--accent); }
