@@ -1,16 +1,19 @@
-// FILE: js/firebase-config.js
+// FILE: js/firebase-config.js (মোবাইল ভার্সন - সরাসরি এপিআই কী বসানো)
+
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
-// .env ফাইল থেকে কনফিগ ভ্যালু গুলো লোড করুন
+// =====================================================
+// এখানে সরাসরি আপনার আসল কনফিগ ডেটা বসিয়ে দিন
+// =====================================================
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  apiKey: "AIzaSyBYFY3eNn69NG54PsIvJkOwh2UMeTpJVdU",
+  authDomain: "melodify-85954.firebaseapp.com",
+  projectId: "melodify-85954",
+  storageBucket: "melodify-85954.firebasestorage.app",
+  messagingSenderId: "635746561853",
+  appId: "1:635746561853:web:fcc711d983cc9332f89f54"
 };
 
 export const app = initializeApp(firebaseConfig);
