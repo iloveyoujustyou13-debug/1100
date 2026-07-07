@@ -1,0 +1,42 @@
+/* ============================================================
+   FILE: css/profile.css (profile page specific)
+   ============================================================ */
+.profile-container {
+  max-width:600px;
+  margin:1rem auto;
+  background:var(--bg-elevated);
+  border-radius:var(--radius);
+  padding:2rem;
+  box-shadow:var(--shadow);
+}
+.profile-header {
+  display:flex;
+  align-items:center;
+  gap:1.5rem;
+  margin-bottom:1.5rem;
+}
+.profile-header .profile-avatar img {
+  width:80px; height:80px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid var(--accent);
+}
+.profile-header .profile-info h1 { font-size:1.4rem; font-weight:700; }
+.profile-header .profile-info p { color:var(--text-secondary); font-size:0.9rem; }
+
+.profile-stats {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0.8rem;
+  margin:1.5rem 0;
+}
+.profile-stats .stat-box {
+  background:var(--bg-card);
+  padding:0.8rem;
+  border-radius:var(--radius-sm);
+  text-align:center;
+}
+.profile-stats .stat-box .number { font-size:1.3rem; font-weight:700; color:var(--accent); display:block; }
+.profile-stats .stat-box .label { font-size:0.65rem; color:var(--text-secondary); }
+
+.profile-actions { display:flex; gap:0.5rem; margin-top:1rem; }
