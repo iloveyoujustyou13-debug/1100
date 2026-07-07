@@ -1,0 +1,152 @@
+<!-- ============================================================
+     FILE: upload.html (song upload page — admin only)
+     ============================================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Melodify · Upload</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1DB954" />
+  <link rel="icon" type="image/png" href="assets/images/Ff_Arpon_cover.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/upload.css" />
+  <link rel="stylesheet" href="css/player.css" />
+</head>
+<body>
+  <div id="appHeader"></div>
+  <main class="container">
+    <h1 style="font-size:1.5rem; font-weight:700; margin-bottom:0.5rem;">
+      <i class="fas fa-cloud-upload-alt" style="color:var(--accent);"></i> Upload Songs
+    </h1>
+    <p style="color:var(--text-secondary); margin-bottom:1.5rem;">Add new songs to the library. You need admin privileges.</p>
+
+    <!-- Single Upload -->
+    <div class="upload-section" id="singleUploadSection">
+      <h2><i class="fas fa-plus-circle"></i> Single Song</h2>
+      <form class="admin-form" id="uploadForm">
+        <div>
+          <label for="songTitle">Song Title *</label>
+          <input type="text" id="songTitle" placeholder="Enter song title" required />
+        </div>
+        <div>
+          <label for="songArtist">Artist *</label>
+          <input type="text" id="songArtist" placeholder="Artist name" required />
+        </div>
+        <div>
+          <label for="songCategory">Category *</label>
+          <input type="text" id="songCategory" placeholder="e.g. Pop, Rock" required />
+        </div>
+        <div>
+          <label for="songAudioUrl">Audio CDN URL *</label>
+          <input type="url" id="songAudioUrl" placeholder="https://cdn.jsdelivr.net/gh/.../song.mp3" required />
+        </div>
+        <div>
+          <label for="songThumbUrl">Cover CDN URL *</label>
+          <input type="url" id="songThumbUrl" placeholder="https://cdn.jsdelivr.net/gh/.../cover.jpg" required />
+        </div>
+        <div class="full-width">
+          <label for="songLyrics">Lyrics (optional)</label>
+          <textarea id="songLyrics" placeholder="Paste lyrics here..." rows="3"></textarea>
+        </div>
+        <div class="full-width" style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+          <button type="submit" class="btn btn-primary" id="uploadBtn">
+            <i class="fas fa-save"></i> Save Song
+          </button>
+          <button type="reset" class="btn" style="background:transparent;">Clear</button>
+        </div>
+        <div class="full-width progress-wrapper" id="uploadProgress">
+          <div class="progress-bar-bg"><div class="progress-bar-fill" id="uploadProgressFill"></div></div>
+          <div class="progress-status"><span id="uploadStatus">Saving...</span><span id="uploadPercent">0%</span></div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Batch Upload -->
+    <div class="upload-section" id="batchUploadSection" style="margin-top:2rem;">
+      <h2><i class="fab fa-github"></i> Batch Upload</h2>
+      <p style="color:var(--text-secondary); font-size:0.85rem; margin-bottom:0.8rem;">
+        Upload multiple songs from GitHub. Auto‑fill from filenames.
+      </p>
+      <form id="githubBatchForm" class="admin-form">
+        <div>
+          <label for="ghToken">GitHub Token</label>
+          <input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxx" required />
+        </div>
+        <div>
+          <label for="ghOwner">Repository Owner</label>
+          <input type="text" id="ghOwner" placeholder="your-username" required />
+        </div>
+        <div>
+          <label for="ghRepo">Repository Name</label>
+          <input type="text" id="ghRepo" placeholder="melodify-songs" required />
+        </div>
+        <div>
+          <label for="ghBranch">Branch</label>
+          <input type="text" id="ghBranch" value="main" />
+        </div>
+        <div class="full-width">
+          <div class="save-creds-wrapper">
+            <input type="checkbox" id="ghSaveCreds" checked />
+            <label for="ghSaveCreds">Save credentials locally</label>
+            <button type="button" class="clear-creds-btn" id="clearGhCreds">Clear saved</button>
+          </div>
+        </div>
+        <div class="full-width" id="songRowsContainer">
+          <div id="songRows"></div>
+          <button type="button" class="btn" id="addSongRow" style="width:100%; margin-top:0.4rem;">
+            <i class="fas fa-plus-circle"></i> Add Song
+          </button>
+        </div>
+
+        <!-- Batch lyrics -->
+        <div class="full-width batch-lyrics-section">
+          <div class="section-title"><i class="fas fa-microphone-alt"></i> Lyrics (LRC format)</div>
+          <textarea id="batchLyricsInput" placeholder="Paste LRC lyrics here...&#10;[00:10.00] Hello world&#10;[00:15.50] How are you?"></textarea>
+          <div class="hint">Paste lyrics with timestamps in <code>[mm:ss.xx]</code> format.</div>
+        </div>
+
+        <div class="full-width" style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.4rem;">
+          <button type="submit" class="btn btn-primary" id="ghBatchUploadBtn">
+            <i class="fab fa-github"></i> Upload All
+          </button>
+          <button type="reset" class="btn" style="background:transparent;">Clear All</button>
+        </div>
+        <div class="full-width progress-wrapper" id="ghBatchProgress">
+          <div class="progress-bar-bg"><div class="progress-bar-fill" id="ghBatchProgressFill"></div></div>
+          <div class="progress-status"><span id="ghBatchStatus">Preparing...</span><span id="ghBatchPercent">0%</span></div>
+        </div>
+        <div class="full-width batch-summary" id="batchSummary">
+          <div class="summary-header"><i class="fas fa-check-circle"></i> Upload complete</div>
+          <div class="summary-details" id="batchSummaryDetails"></div>
+        </div>
+        <div id="ghBatchError" style="display:none; margin-top:0.8rem; padding:0.8rem; background:rgba(239,68,68,0.08); border-radius:var(--radius-sm); border:1px solid rgba(239,68,68,0.15);">
+          <div style="color:#ef4444; font-weight:600;"><i class="fas fa-exclamation-circle"></i> Error</div>
+          <div id="ghBatchErrorMessage" style="color:var(--text-secondary); font-size:0.8rem; margin-top:0.2rem;"></div>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <div id="playerContainer"></div>
+  <div class="toast-container" id="toastContainer"></div>
+  <audio id="audioElement" preload="metadata"></audio>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "firebase/app": "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js",
+        "firebase/auth": "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js",
+        "firebase/firestore": "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"
+      }
+    }
+  </script>
+  <script type="module">
+    import './js/app.js';
+  </script>
+</body>
+</html>
