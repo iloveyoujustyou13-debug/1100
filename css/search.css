@@ -1,0 +1,53 @@
+/* ============================================================
+   FILE: css/search.css (search page specific)
+   ============================================================ */
+.search-page .search-hero {
+  background:var(--bg-elevated);
+  border-radius:var(--radius);
+  padding:1.5rem 2rem;
+  margin-bottom:1.5rem;
+  box-shadow:var(--shadow);
+}
+.search-page .search-hero h1 { font-size:1.5rem; font-weight:700; margin-bottom:0.5rem; }
+.search-page .search-bar-large {
+  display:flex;
+  gap:0.5rem;
+  margin:0.5rem 0 0.8rem;
+}
+.search-page .search-bar-large input {
+  flex:1;
+  padding:0.5rem 1rem;
+  border-radius:var(--radius-full);
+  border:none;
+  background:var(--bg-highlight);
+  color:var(--text-primary);
+  font-family:var(--font);
+  font-size:0.9rem;
+  outline:none;
+}
+.search-page .search-bar-large input:focus { box-shadow:0 0 0 2px var(--accent); }
+.search-page .search-filters {
+  display:flex;
+  gap:0.5rem;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.search-page .search-filters select {
+  padding:0.3rem 0.8rem;
+  border-radius:var(--radius-full);
+  border:none;
+  background:var(--bg-highlight);
+  color:var(--text-primary);
+  font-family:var(--font);
+  font-size:0.8rem;
+  outline:none;
+  cursor:pointer;
+}
+.search-page .search-filters select:focus { box-shadow:0 0 0 2px var(--accent); }
+.search-page .search-filters .favorites-toggle {
+  background:var(--bg-highlight);
+  padding:0.3rem 0.8rem;
+  border-radius:var(--radius-full);
+  font-size:0.8rem;
+}
+.search-page .search-filters .favorites-toggle.active { background:rgba(239,68,68,0.15); color:#ef4444; }
