@@ -1,0 +1,20 @@
+// ============================================================
+// FILE: package.json
+// ============================================================
+{
+  "name": "melodify-music",
+  "version": "1.0.0",
+  "description": "Melodify — Music PWA with Firebase",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "firebase": "^10.7.1"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
