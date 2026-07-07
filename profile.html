@@ -1,0 +1,61 @@
+<!-- ============================================================
+     FILE: profile.html (user profile)
+     ============================================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Melodify · Profile</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1DB954" />
+  <link rel="icon" type="image/png" href="assets/images/Ff_Arpon_cover.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/profile.css" />
+  <link rel="stylesheet" href="css/player.css" />
+</head>
+<body>
+  <div id="appHeader"></div>
+  <main class="container">
+    <div class="profile-container">
+      <div class="profile-header">
+        <div class="profile-avatar">
+          <img id="profileAvatar" src="assets/images/default-avatar.png" alt="Avatar" />
+        </div>
+        <div class="profile-info">
+          <h1 id="profileName">User</h1>
+          <p id="profileEmail">user@example.com</p>
+          <p id="profileMemberSince" style="color:var(--text-muted); font-size:0.8rem;">Member since —</p>
+        </div>
+      </div>
+      <div class="profile-stats">
+        <div class="stat-box"><span class="number" id="profileLikedCount">0</span><span class="label">Liked Songs</span></div>
+        <div class="stat-box"><span class="number" id="profilePlaylistCount">0</span><span class="label">Playlists</span></div>
+        <div class="stat-box"><span class="number" id="profileHistoryCount">0</span><span class="label">Listened</span></div>
+      </div>
+      <div class="profile-actions">
+        <button class="btn btn-primary" id="profileLogoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+      </div>
+    </div>
+  </main>
+  <div id="playerContainer"></div>
+  <div class="toast-container" id="toastContainer"></div>
+  <audio id="audioElement" preload="metadata"></audio>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "firebase/app": "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js",
+        "firebase/auth": "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js",
+        "firebase/firestore": "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"
+      }
+    }
+  </script>
+  <script type="module">
+    import './js/app.js';
+  </script>
+</body>
+</html>
