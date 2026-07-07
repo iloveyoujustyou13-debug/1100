@@ -1,0 +1,101 @@
+<!-- ============================================================
+     FILE: library.html (user library: liked + playlists)
+     ============================================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Melodify · Library</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1DB954" />
+  <link rel="icon" type="image/png" href="assets/images/Ff_Arpon_cover.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/library.css" />
+  <link rel="stylesheet" href="css/player.css" />
+</head>
+<body>
+  <div id="appHeader"></div>
+  <main class="container">
+    <div class="library-page">
+      <h1 style="font-size:1.5rem; font-weight:700; margin-bottom:0.5rem;">
+        <i class="fas fa-heart" style="color:#ef4444;"></i> Your Library
+      </h1>
+
+      <!-- Tabs -->
+      <div class="library-tabs">
+        <button class="lib-tab active" data-tab="liked"><i class="fas fa-heart"></i> Liked Songs</button>
+        <button class="lib-tab" data-tab="playlists"><i class="fas fa-list"></i> Playlists</button>
+        <button class="lib-tab" data-tab="history"><i class="fas fa-clock-rotate-left"></i> History</button>
+      </div>
+
+      <!-- Liked -->
+      <div class="lib-content active" id="lib-liked">
+        <div id="likedGrid" class="song-grid"></div>
+        <div id="likedEmpty" class="empty-state">
+          <i class="fas fa-heart" style="color:var(--text-muted);"></i>
+          <h3>No liked songs</h3>
+          <p>Heart a song to add it to your library.</p>
+        </div>
+      </div>
+
+      <!-- Playlists -->
+      <div class="lib-content" id="lib-playlists">
+        <div class="create-playlist-form">
+          <input type="text" id="newPlaylistName" placeholder="New playlist name..." />
+          <button class="btn btn-primary" id="createPlaylistBtn"><i class="fas fa-plus"></i> Create</button>
+        </div>
+        <div id="playlistList" class="playlist-list"></div>
+        <div id="playlistDetailView" class="playlist-detail">
+          <button class="back-btn" id="backFromDetail"><i class="fas fa-arrow-left"></i> Back</button>
+          <h3 id="detailPlaylistName" style="margin-bottom:0.4rem;"></h3>
+          <div id="detailSongsList" class="detail-songs"></div>
+        </div>
+      </div>
+
+      <!-- History -->
+      <div class="lib-content" id="lib-history">
+        <div id="historyGrid" class="recent-grid"></div>
+        <div id="historyEmpty" class="empty-state">
+          <i class="fas fa-clock-rotate-left" style="color:var(--text-muted);"></i>
+          <h3>No listening history</h3>
+          <p>Start playing songs to build your history.</p>
+        </div>
+        <button class="btn btn-danger btn-sm" id="clearHistoryBtnLib" style="margin-top:1rem;">
+          <i class="fas fa-trash-alt"></i> Clear History
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Add to Playlist Popup -->
+  <div class="add-to-playlist-popup" id="addToPlaylistPopup">
+    <div class="popup-title"><i class="fas fa-plus-circle"></i> Add to playlist</div>
+    <div class="popup-list" id="popupPlaylistList"></div>
+    <div class="popup-create">
+      <input type="text" id="popupNewPlaylistName" placeholder="New playlist..." />
+      <button class="btn btn-primary btn-sm" id="popupCreatePlaylistBtn"><i class="fas fa-plus"></i></button>
+    </div>
+  </div>
+
+  <div id="playerContainer"></div>
+  <div class="toast-container" id="toastContainer"></div>
+  <audio id="audioElement" preload="metadata"></audio>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "firebase/app": "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js",
+        "firebase/auth": "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js",
+        "firebase/firestore": "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"
+      }
+    }
+  </script>
+  <script type="module">
+    import './js/app.js';
+  </script>
+</body>
+</html>
