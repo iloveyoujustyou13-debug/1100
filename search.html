@@ -1,0 +1,69 @@
+<!-- ============================================================
+     FILE: search.html (dedicated search page)
+     ============================================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Melodify · Search</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1DB954" />
+  <link rel="icon" type="image/png" href="assets/images/Ff_Arpon_cover.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/search.css" />
+  <link rel="stylesheet" href="css/player.css" />
+</head>
+<body>
+  <div id="appHeader"></div>
+  <main class="container">
+    <div class="search-page">
+      <div class="search-hero">
+        <h1><i class="fas fa-search" style="color:var(--accent);"></i> Search</h1>
+        <div class="search-bar-large">
+          <input type="text" id="searchInputLarge" placeholder="Search for songs, artists, categories..." />
+          <button class="btn btn-primary" id="searchBtnLarge"><i class="fas fa-search"></i> Search</button>
+        </div>
+        <div class="search-filters">
+          <select id="categoryFilterLarge"><option value="all">All Categories</option></select>
+          <select id="sortSelectLarge">
+            <option value="recent">Recent</option>
+            <option value="title">Title A–Z</option>
+            <option value="artist">Artist A–Z</option>
+            <option value="likes">Most Liked</option>
+            <option value="views">Most Viewed</option>
+          </select>
+          <button class="favorites-toggle" id="favoritesToggleLarge">
+            <i class="fas fa-heart"></i> Liked Only
+          </button>
+        </div>
+      </div>
+      <div id="searchResults" class="song-grid"></div>
+      <div id="searchEmpty" class="empty-state hidden">
+        <i class="fas fa-music"></i>
+        <h3>No results found</h3>
+        <p>Try adjusting your search terms.</p>
+      </div>
+    </div>
+  </main>
+  <div id="playerContainer"></div>
+  <div class="toast-container" id="toastContainer"></div>
+  <audio id="audioElement" preload="metadata"></audio>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "firebase/app": "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js",
+        "firebase/auth": "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js",
+        "firebase/firestore": "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"
+      }
+    }
+  </script>
+  <script type="module">
+    import './js/app.js';
+  </script>
+</body>
+</html>
